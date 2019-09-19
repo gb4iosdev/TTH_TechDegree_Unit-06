@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8640302A2330602B00EE6881 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864030292330602B00EE6881 /* CharacterViewModel.swift */; };
+		8640302C2330609600EE6881 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640302B2330609600EE6881 /* Planet.swift */; };
+		8640302E233060CF00EE6881 /* CraftType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640302D233060CF00EE6881 /* CraftType.swift */; };
+		86403030233060EE00EE6881 /* Craft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640302F233060EE00EE6881 /* Craft.swift */; };
+		864030322330611F00EE6881 /* CraftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864030312330611F00EE6881 /* CraftViewModel.swift */; };
+		865F2C3F2332F0C200310B98 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F2C3E2332F0C200310B98 /* JSONDownloader.swift */; };
+		865F2C422332F13200310B98 /* SWAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F2C412332F13200310B98 /* SWAPIError.swift */; };
 		86907265232F969900D715E0 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907264232F969900D715E0 /* Character.swift */; };
 		86907267232F976200D715E0 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907266232F976200D715E0 /* Vehicle.swift */; };
 		8690726A232F982300D715E0 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907269232F982300D715E0 /* Starship.swift */; };
@@ -18,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		864030292330602B00EE6881 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		8640302B2330609600EE6881 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		8640302D233060CF00EE6881 /* CraftType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftType.swift; sourceTree = "<group>"; };
+		8640302F233060EE00EE6881 /* Craft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Craft.swift; sourceTree = "<group>"; };
+		864030312330611F00EE6881 /* CraftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftViewModel.swift; sourceTree = "<group>"; };
+		865F2C3E2332F0C200310B98 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
+		865F2C412332F13200310B98 /* SWAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIError.swift; sourceTree = "<group>"; };
 		86907264232F969900D715E0 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		86907266232F976200D715E0 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		86907269232F982300D715E0 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
@@ -41,12 +55,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		864030282330600900EE6881 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				864030292330602B00EE6881 /* CharacterViewModel.swift */,
+				864030312330611F00EE6881 /* CraftViewModel.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		865F2C3D2332F09F00310B98 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				865F2C3E2332F0C200310B98 /* JSONDownloader.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		865F2C402332F0F500310B98 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				865F2C412332F13200310B98 /* SWAPIError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		86907268232F97E200D715E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				86907264232F969900D715E0 /* Character.swift */,
+				8640302F233060EE00EE6881 /* Craft.swift */,
 				86907266232F976200D715E0 /* Vehicle.swift */,
 				86907269232F982300D715E0 /* Starship.swift */,
+				8640302B2330609600EE6881 /* Planet.swift */,
+				8640302D233060CF00EE6881 /* CraftType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -70,10 +112,13 @@
 		86B609B6232F0B8000298EEA /* theAPIAwakens */ = {
 			isa = PBXGroup;
 			children = (
+				864030282330600900EE6881 /* View */,
 				86B609B7232F0B8000298EEA /* AppDelegate.swift */,
 				86B609B9232F0B8000298EEA /* ViewController.swift */,
 				86B609BB232F0B8000298EEA /* Main.storyboard */,
 				86907268232F97E200D715E0 /* Model */,
+				865F2C3D2332F09F00310B98 /* Network */,
+				865F2C402332F0F500310B98 /* Error */,
 				86B609BE232F0B8200298EEA /* Assets.xcassets */,
 				86B609C0232F0B8200298EEA /* LaunchScreen.storyboard */,
 				86B609C3232F0B8200298EEA /* Info.plist */,
@@ -153,9 +198,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				86907267232F976200D715E0 /* Vehicle.swift in Sources */,
+				865F2C422332F13200310B98 /* SWAPIError.swift in Sources */,
 				8690726A232F982300D715E0 /* Starship.swift in Sources */,
+				86403030233060EE00EE6881 /* Craft.swift in Sources */,
+				865F2C3F2332F0C200310B98 /* JSONDownloader.swift in Sources */,
 				86907265232F969900D715E0 /* Character.swift in Sources */,
 				86B609BA232F0B8000298EEA /* ViewController.swift in Sources */,
+				864030322330611F00EE6881 /* CraftViewModel.swift in Sources */,
+				8640302E233060CF00EE6881 /* CraftType.swift in Sources */,
+				8640302C2330609600EE6881 /* Planet.swift in Sources */,
+				8640302A2330602B00EE6881 /* CharacterViewModel.swift in Sources */,
 				86B609B8232F0B8000298EEA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

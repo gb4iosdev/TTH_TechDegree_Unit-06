@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    fileprivate let apiKey = "???????"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let starWarsBaseURL = URL(string: "https://swapi.co/api/")
+        let starWarsAPICharacterURL = URL(string: "people", relativeTo: starWarsBaseURL)
     }
 
 

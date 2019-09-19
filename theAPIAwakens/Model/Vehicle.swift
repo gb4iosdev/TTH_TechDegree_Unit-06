@@ -8,7 +8,17 @@
 
 import Foundation
 
-struct Vehicle {
+struct Vehicle: Craft {
+    
+    let name: String
+    let make: String
+    let cost: Int
+    let length: Double
+    let craftClass: String
+    let crewCapacity: Int
+    let craftType: CraftType = .vehicle
+}
+
     /*
      
      {
@@ -34,7 +44,7 @@ struct Vehicle {
      },
      
     */
-}
+
 
 
 /* Schema:
