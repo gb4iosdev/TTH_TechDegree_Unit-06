@@ -17,7 +17,7 @@ struct CraftViewModel {
     let craftClass: String
     let crewCapacity: String
     
-    init(using craft: Craft) {
+    init(from craft: Craft) {
         
         name = craft.name
         make = craft.make

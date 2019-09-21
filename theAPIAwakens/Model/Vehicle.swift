@@ -17,6 +17,11 @@ struct Vehicle: Craft {
     let craftClass: String
     let crewCapacity: Int
     let craftType: CraftType = .vehicle
+    var url: URL
+    
+    func fetchDetail() {
+        
+    }
 }
 
     /*

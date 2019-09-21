@@ -9,11 +9,15 @@
 import Foundation
 
 protocol Craft {
-    let name: String
-    let make: String
-    let cost: Int
-    let length: Double
-    let craftClass: String
-    let crewCapacity: Int
-    let craftType: CraftType
+    var name: String { get }
+    var make: String { get }
+    var cost: Int { get }
+    var length: Double { get }
+    var craftClass: String { get }
+    var crewCapacity: Int { get }
+    var craftType: CraftType { get }
+    var url: URL { get }                     //Could also act as a unique ID for the character
+    
+    func fetchDetail()
 }
+

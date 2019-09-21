@@ -11,12 +11,48 @@ import Foundation
 struct Character {
     let name: String
     let birthyear: String
-    let homeWorld: Planet
+    let homeWorldURL: URL
+    //let homeWorld: Planet
     let height: Double
     let eyeColour: String
     let hairColour: String
-    let vehiclesPiloted: [Vehicle]
-    let starshipsPiloted: [Starship]
+    //let vehiclesPiloted: [Vehicle]
+    //let starshipsPiloted: [Starship]
+}
+
+extension Character {
+    struct Key {
+        static let name = "name"
+        static let birthyear = "birth_year"
+        static let homeWorldURL = "homeworld"
+        static let height = "height"
+        static let eyeColour = "eye_color"
+        static let hairColour = "hair_color"
+        //static let vehiclesPiloted: = "vehicles"
+        //static let starshipsPiloted: = "starships"
+    }
+    
+    typealias JSON = [String:AnyObject]
+    
+    init?(json: JSON) {
+        guard let name = json[Key.name] as? String,
+        let birthyear = json[Key.birthyear] as? String,
+        let homeWorldURLString = json[Key.homeWorldURL] as? String,
+        let homeWorldURL = URL(string: homeWorldURLString),
+        let heightString = json[Key.height] as? String,
+        let height = Double(heightString),
+        let eyeColour = json[Key.eyeColour] as? String,
+        let hairColour = json[Key.hairColour] as? String else {
+                return nil
+        }
+        
+        self.name = name
+        self.birthyear = birthyear
+        self.homeWorldURL = homeWorldURL
+        self.height = height
+        self.eyeColour = eyeColour
+        self.hairColour = hairColour
+    }
 }
 
 /*Schema:

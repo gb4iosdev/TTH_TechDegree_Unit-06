@@ -10,15 +10,34 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    fileprivate let apiKey = "???????"
+    let client = StarWarsAPIClient()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        let starWarsBaseURL = URL(string: "https://swapi.co/api/")
-        let starWarsAPICharacterURL = URL(string: "people", relativeTo: starWarsBaseURL)
+        super.viewDidLoad()
+        client.getStarWarsData(for: .character) { [unowned self] character, error in
+            if let character = character {
+                let viewModel = CharacterViewModel(from: character)
+                self.displayCharacter(using: viewModel)
+            }
+            
+        }
+        
+        
+        
+        
     }
 
+    func displayCharacter(using characterViewModel: CharacterViewModel) {
+        print("\(characterViewModel.name)")
+        print("\(characterViewModel.birthyear)")
+        //print("\(characterViewModel.birthPlace)")
+        print("\(characterViewModel.height)")
+        print("\(characterViewModel.eyeColour)")
+        print("\(characterViewModel.hairColour)")
+        //print("\(characterViewModel.vehiclesPiloted)")
+        //print("\(characterViewModel.starshipsPiloted)")
+    }
 
 }
 
