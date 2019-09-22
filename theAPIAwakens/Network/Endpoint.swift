@@ -11,4 +11,5 @@ import Foundation
 enum Endpoint: String {
     
     case character = "people/1/"
+    case vehicle = "vehicles/4/"
 }

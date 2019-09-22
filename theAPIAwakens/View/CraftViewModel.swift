@@ -16,6 +16,7 @@ struct CraftViewModel {
     let length: String
     let craftClass: String
     let crewCapacity: String
+    let url: String
     
     init(from craft: Craft) {
         
@@ -25,5 +26,6 @@ struct CraftViewModel {
         length = String(craft.length)        //Need Conversion here
         craftClass = craft.craftClass
         crewCapacity = String(craft.crewCapacity)
+        url = craft.url
     }
 }

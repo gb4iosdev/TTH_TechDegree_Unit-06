@@ -14,32 +14,50 @@ class StarWarsAPIClient {
         return URL(string: "https://swapi.co/api/")!
     }()
     
-    let downloader = JSONDownloader()
+    let decoder = JSONDecoder()
     
-    typealias StarWarsDataCompletionHandler = (Character?, StarWarsAPIError?) -> Void
+    let session: URLSession
     
-    func getStarWarsData(for endpoint: Endpoint, completionHandler completion: @escaping StarWarsDataCompletionHandler) {
+    init(configuration: URLSessionConfiguration) {
+        self.session = URLSession(configuration: configuration)
+    }
+    
+    convenience init() {
+        self.init(configuration: .default)
+    }
+    
+    //typealias StarWarsDataCompletionHandler = (T?, Error?) -> Void
+    
+    func getStarWarsData<T: Codable>(from endpoint: Endpoint, to type: T.Type, completionHandler completion: @escaping (T?, Error?) -> Void) {
         
         guard let starWarsFullURL = URL(string: endpoint.rawValue, relativeTo: starWarsBaseURL) else {
-            completion(nil, .invalidURL)
+            completion(nil, StarWarsAPIError.invalidURL)
             return
         }
         
         let request = URLRequest(url: starWarsFullURL)
         
-        let task = downloader.jsonTask(with: request) { json, error in
+        let task = session.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
-                guard let json = json else {
+                if let data = data {
+                    guard let httpResponse = response as? HTTPURLResponse else {
+                        completion(nil, StarWarsAPIError.requestFailed)
+                        return
+                    }
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            let character = try self.decoder.decode(type, from: data)
+                            completion(character, nil)
+                            
+                        } catch let error {
+                            completion(nil, error)
+                        }
+                    } else {
+                        completion(nil, StarWarsAPIError.invalidData)
+                    }
+                } else if let error = error {
                     completion(nil, error)
-                    return
                 }
-                
-                guard let character = Character(json: json) else {
-                    completion(nil, .jsonParsingFailure)
-                    return
-                }
-                
-                completion(character, nil)
             }
         }
         

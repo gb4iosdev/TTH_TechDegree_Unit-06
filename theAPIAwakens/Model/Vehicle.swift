@@ -8,16 +8,26 @@
 
 import Foundation
 
-struct Vehicle: Craft {
+struct Vehicle: Craft, Codable {
     
     let name: String
     let make: String
-    let cost: Int
-    let length: Double
+    let cost: String
+    let length: String
     let craftClass: String
-    let crewCapacity: Int
+    let crewCapacity: String
     let craftType: CraftType = .vehicle
-    var url: URL
+    let url: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case make = "model"
+        case cost = "cost_in_credits"
+        case length
+        case craftClass = "vehicle_class"
+        case crewCapacity = "crew"
+        case url
+    }
     
     func fetchDetail() {
         

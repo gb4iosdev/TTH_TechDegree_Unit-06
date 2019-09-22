@@ -12,7 +12,6 @@
 		8640302E233060CF00EE6881 /* CraftType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640302D233060CF00EE6881 /* CraftType.swift */; };
 		86403030233060EE00EE6881 /* Craft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640302F233060EE00EE6881 /* Craft.swift */; };
 		864030322330611F00EE6881 /* CraftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864030312330611F00EE6881 /* CraftViewModel.swift */; };
-		865F2C3F2332F0C200310B98 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F2C3E2332F0C200310B98 /* JSONDownloader.swift */; };
 		86907265232F969900D715E0 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907264232F969900D715E0 /* Character.swift */; };
 		86907267232F976200D715E0 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907266232F976200D715E0 /* Vehicle.swift */; };
 		8690726A232F982300D715E0 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907269232F982300D715E0 /* Starship.swift */; };
@@ -32,7 +31,6 @@
 		8640302D233060CF00EE6881 /* CraftType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftType.swift; sourceTree = "<group>"; };
 		8640302F233060EE00EE6881 /* Craft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Craft.swift; sourceTree = "<group>"; };
 		864030312330611F00EE6881 /* CraftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftViewModel.swift; sourceTree = "<group>"; };
-		865F2C3E2332F0C200310B98 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		86907264232F969900D715E0 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		86907266232F976200D715E0 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		86907269232F982300D715E0 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 		865F2C3D2332F09F00310B98 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				865F2C3E2332F0C200310B98 /* JSONDownloader.swift */,
 				86DF3CFD233511ED00CE2A86 /* StarWarsAPIClient.swift */,
 				86DF3CFF2335125500CE2A86 /* Endpoint.swift */,
 			);
@@ -208,7 +205,6 @@
 				8690726A232F982300D715E0 /* Starship.swift in Sources */,
 				86403030233060EE00EE6881 /* Craft.swift in Sources */,
 				86DF3CFE233511ED00CE2A86 /* StarWarsAPIClient.swift in Sources */,
-				865F2C3F2332F0C200310B98 /* JSONDownloader.swift in Sources */,
 				86907265232F969900D715E0 /* Character.swift in Sources */,
 				86B609BA232F0B8000298EEA /* ViewController.swift in Sources */,
 				864030322330611F00EE6881 /* CraftViewModel.swift in Sources */,

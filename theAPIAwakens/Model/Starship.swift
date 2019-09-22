@@ -12,12 +12,12 @@ struct Starship: Craft {
     
     let name: String
     let make: String
-    let cost: Int
-    let length: Double
+    let cost: String
+    let length: String
     let craftClass: String
-    let crewCapacity: Int
+    let crewCapacity: String
     let craftType: CraftType = .starship
-    var url: URL
+    var url: String
     
     func fetchDetail() {
         

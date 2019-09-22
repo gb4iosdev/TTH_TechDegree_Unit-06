@@ -15,28 +15,50 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        client.getStarWarsData(for: .character) { [unowned self] character, error in
-            if let character = character {
-                let viewModel = CharacterViewModel(from: character)
-                self.displayCharacter(using: viewModel)
-            }
-            
-        }
         
-        
-        
+        getStarWarsData()
         
     }
 
     func displayCharacter(using characterViewModel: CharacterViewModel) {
         print("\(characterViewModel.name)")
         print("\(characterViewModel.birthyear)")
-        //print("\(characterViewModel.birthPlace)")
+        print("\(characterViewModel.birthPlace)")
         print("\(characterViewModel.height)")
         print("\(characterViewModel.eyeColour)")
         print("\(characterViewModel.hairColour)")
+        print("\(characterViewModel.url)")
         //print("\(characterViewModel.vehiclesPiloted)")
         //print("\(characterViewModel.starshipsPiloted)")
+    }
+    
+    func displayVehicle(using craftViewModel: CraftViewModel) {
+        print("\(craftViewModel.name)")
+        print("\(craftViewModel.make)")
+        print("\(craftViewModel.cost)")
+        print("\(craftViewModel.length)")
+        print("\(craftViewModel.craftClass)")
+        print("\(craftViewModel.crewCapacity)")
+        print("\(craftViewModel.url)")
+    }
+    
+    func getStarWarsData() {
+        client.getStarWarsData(from: Endpoint.character, to: Character.self) { [unowned self] character, error in
+            if let character = character {
+                let viewModel = CharacterViewModel(from: character)
+                self.displayCharacter(using: viewModel)
+            } else {
+                print("didn't work:\(error)")
+            }
+        }
+        client.getStarWarsData(from: Endpoint.vehicle, to: Vehicle.self) { [unowned self] vehicle, error in
+            if let vehicle = vehicle {
+                let viewModel = CraftViewModel(from: vehicle)
+                self.displayVehicle(using: viewModel)
+            } else {
+                print("didn't work:\(error)")
+            }
+        }
     }
 
 }
