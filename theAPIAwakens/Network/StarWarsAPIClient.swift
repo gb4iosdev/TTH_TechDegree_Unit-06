@@ -10,9 +10,9 @@ import Foundation
 
 class StarWarsAPIClient {
     
-    lazy var starWarsBaseURL: URL = {
-        return URL(string: "https://swapi.co/api/")!
-    }()
+//    lazy var starWarsBaseURL: URL = {
+//        return URL(string: "https://swapi.co/api/")!
+//    }()
     
     let decoder = JSONDecoder()
     
@@ -26,16 +26,14 @@ class StarWarsAPIClient {
         self.init(configuration: .default)
     }
     
-    //typealias StarWarsDataCompletionHandler = (T?, Error?) -> Void
-    
-    func getStarWarsData<T: Codable>(from endpoint: Endpoint, to type: T.Type, completionHandler completion: @escaping (T?, Error?) -> Void) {
+    func getStarWarsData<T: Codable>(from endpoint: URL?, to type: T.Type, completionHandler completion: @escaping (T?, Error?) -> Void) {
         
-        guard let starWarsFullURL = URL(string: endpoint.rawValue, relativeTo: starWarsBaseURL) else {
+        guard let starWarsAPIURL = endpoint else {
             completion(nil, StarWarsAPIError.invalidURL)
             return
         }
         
-        let request = URLRequest(url: starWarsFullURL)
+        let request = URLRequest(url: starWarsAPIURL)
         
         let task = session.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
@@ -46,8 +44,8 @@ class StarWarsAPIClient {
                     }
                     if httpResponse.statusCode == 200 {
                         do {
-                            let character = try self.decoder.decode(type, from: data)
-                            completion(character, nil)
+                            let entity = try self.decoder.decode(type, from: data)
+                            completion(entity, nil)
                             
                         } catch let error {
                             completion(nil, error)

@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         getStarWarsData()
+        //retrieveStarWarsPeoplePage()
         
     }
 
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
         print("\(characterViewModel.eyeColour)")
         print("\(characterViewModel.hairColour)")
         print("\(characterViewModel.url)")
-        //print("\(characterViewModel.vehiclesPiloted)")
+        print("\(characterViewModel.vehiclesPiloted)")
         //print("\(characterViewModel.starshipsPiloted)")
     }
     
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
     }
     
     func getStarWarsData() {
-        client.getStarWarsData(from: Endpoint.character, to: Character.self) { [unowned self] character, error in
+        client.getStarWarsData(from: Endpoint.character.fullURL(), to: Character.self) { [unowned self] character, error in
             if let character = character {
                 let viewModel = CharacterViewModel(from: character)
                 self.displayCharacter(using: viewModel)
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
                 print("didn't work:\(error)")
             }
         }
-        client.getStarWarsData(from: Endpoint.vehicle, to: Vehicle.self) { [unowned self] vehicle, error in
+        client.getStarWarsData(from: Endpoint.vehicle.fullURL(), to: Vehicle.self) { [unowned self] vehicle, error in
             if let vehicle = vehicle {
                 let viewModel = CraftViewModel(from: vehicle)
                 self.displayVehicle(using: viewModel)
@@ -59,6 +60,34 @@ class ViewController: UIViewController {
                 print("didn't work:\(error)")
             }
         }
+        client.getStarWarsData(from: Endpoint.peopleLastPage.fullURL(), to: People.self) { [unowned self] people, error in
+            if let people = people {
+                print("People are:\(people) so why should it be")
+                print("People.next is: \(people.next)")
+                print("People[5] is: \(people.results[5])")
+            } else {
+                print("didn't work for people:\(error)")
+            }
+        }
+    }
+    
+    func retrieveStarWarsPeoplePage() {
+        var allCharacters: [CharacterHeader] = []
+        var nextPage: String? = ""
+        
+        while nextPage != nil {
+            client.getStarWarsData(from: Endpoint.people.fullURL(), to: People.self) { [unowned self] people, error in
+                if let people = people {
+                    allCharacters.append(contentsOf: people.results)
+                    //print("Next page for people is :\(people.next)")
+                    nextPage = people.next
+                } else {
+                    nextPage = nil
+                }
+            }
+        }
+        
+        
     }
 
 }

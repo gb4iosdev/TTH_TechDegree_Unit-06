@@ -12,12 +12,12 @@ struct CharacterViewModel {
     
     let name: String
     let birthyear: String
-    let birthPlace: String
+    let birthPlace: URL
     let height: String
     let eyeColour: String
     let hairColour: String
-    let url: String
-    //let vehiclesPiloted: [String]
+    let url: URL
+    let vehiclesPiloted: [String]
     //let starshipsPiloted: [String]
     
     init(from character: Character) {
@@ -26,11 +26,16 @@ struct CharacterViewModel {
         birthyear = character.birthYear
         //birthPlace = character.homeWorld.name
         birthPlace = character.homeworldURL
-        height = character.height + "m"  //Need Conversion here
+        if let height = character.height {
+            self.height = String(height) + "m"  //Need Conversion here
+        } else {
+            self.height = "Unknown"
+        }
+        
         eyeColour = character.eyeColour
         hairColour = character.hairColour
         url = character.url
-        //vehiclesPiloted = character.vehiclesPiloted.map { $0.name }
+        vehiclesPiloted = character.vehiclesPiloted.map { $0.absoluteString }
         //starshipsPiloted = character.starshipsPiloted.map { $0.name }
     }
 }

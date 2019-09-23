@@ -11,23 +11,28 @@ import Foundation
 struct Character: Codable {
     let name: String
     let birthYear: String
-    let homeworldURL: String
+    let homeworldURL: URL
     //let homeWorld: Planet
-    let height: String
+    private let heightString: String
+    var height: Double? {
+        return Double(heightString)
+    }
     let eyeColour: String
     let hairColour: String
-    let url: String
-    //let vehiclesPiloted: [Vehicle]
-    //let starshipsPiloted: [Starship]
+    let url: URL
+    let vehiclesPiloted: [URL]
+    //let starshipsPiloted: [URL]
     
+    //Mapping/Bridge between the JSON dictionary keys and model variables
     enum CodingKeys: String, CodingKey {
         case name
         case birthYear = "birth_year"
         case homeworldURL = "homeworld"
-        case height
+        case heightString = "height"
         case eyeColour = "eye_color"
         case hairColour = "hair_color"
         case url
+        case vehiclesPiloted = "vehicles"
     }
 }
 
