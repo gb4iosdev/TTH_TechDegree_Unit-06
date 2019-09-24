@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     let client = StarWarsAPIClient()
+    var allCharacters: [CharacterHeader] = []
+    
     
     override func viewDidLoad() {
         
@@ -18,6 +20,9 @@ class ViewController: UIViewController {
         
         getStarWarsData()
         //retrieveStarWarsPeoplePage()
+        print("\n\n\n\n")
+        retrieveStarWarsPage(using: Endpoint.people.fullURL())
+        
         
     }
 
@@ -71,24 +76,28 @@ class ViewController: UIViewController {
         }
     }
     
-    func retrieveStarWarsPeoplePage() {
-        var allCharacters: [CharacterHeader] = []
-        var nextPage: String? = ""
+    func retrieveStarWarsPage(using thisURL: URL?) {
         
-        while nextPage != nil {
-            client.getStarWarsData(from: Endpoint.people.fullURL(), to: People.self) { [unowned self] people, error in
+        if thisURL == nil {
+            return
+        } else {    //Make network call using API client with the URL
+            client.getStarWarsData(from: thisURL, to: People.self) { [unowned self] people, error in
                 if let people = people {
-                    allCharacters.append(contentsOf: people.results)
-                    //print("Next page for people is :\(people.next)")
-                    nextPage = people.next
+                    //Append people's characters to the allCharacters array
+                    self.allCharacters.append(contentsOf: people.results)
+                    //print("AllCharacters are: \(self.allCharacters) \n and count is: \(self.allCharacters.count)")
+                    
+                    //Check if there is a next page, and that it can be created into an URL.  If so, call this method again.
+                    if let nextURL = people.next {
+                        self.retrieveStarWarsPage(using: nextURL)
+                    } else {
+                        print("AllCharacters count is: \(self.allCharacters.count)")
+                    }
                 } else {
-                    nextPage = nil
+                    print("Error in retrieveStarWarsPage is: \(error)")     ///Create an alert here??
                 }
             }
         }
-        
-        
     }
-
 }
 

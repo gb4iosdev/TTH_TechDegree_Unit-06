@@ -13,8 +13,8 @@
 		86403030233060EE00EE6881 /* Craft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640302F233060EE00EE6881 /* Craft.swift */; };
 		864030322330611F00EE6881 /* CraftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864030312330611F00EE6881 /* CraftViewModel.swift */; };
 		8657CFE4233801D500AFE1A2 /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657CFE3233801D500AFE1A2 /* People.swift */; };
-		8657CFE62338047A00AFE1A2 /* CharacterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657CFE52338047A00AFE1A2 /* CharacterHeader.swift */; };
-		86907265232F969900D715E0 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907264232F969900D715E0 /* Character.swift */; };
+		8657CFE62338047A00AFE1A2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657CFE52338047A00AFE1A2 /* Character.swift */; };
+		86907265232F969900D715E0 /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907264232F969900D715E0 /* CharacterDetail.swift */; };
 		86907267232F976200D715E0 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907266232F976200D715E0 /* Vehicle.swift */; };
 		8690726A232F982300D715E0 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86907269232F982300D715E0 /* Starship.swift */; };
 		86B609B8232F0B8000298EEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B609B7232F0B8000298EEA /* AppDelegate.swift */; };
@@ -34,8 +34,8 @@
 		8640302F233060EE00EE6881 /* Craft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Craft.swift; sourceTree = "<group>"; };
 		864030312330611F00EE6881 /* CraftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftViewModel.swift; sourceTree = "<group>"; };
 		8657CFE3233801D500AFE1A2 /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
-		8657CFE52338047A00AFE1A2 /* CharacterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHeader.swift; sourceTree = "<group>"; };
-		86907264232F969900D715E0 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		8657CFE52338047A00AFE1A2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		86907264232F969900D715E0 /* CharacterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetail.swift; sourceTree = "<group>"; };
 		86907266232F976200D715E0 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		86907269232F982300D715E0 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		86B609B4232F0B8000298EEA /* theAPIAwakens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theAPIAwakens.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,14 +90,14 @@
 		86907268232F97E200D715E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				86907264232F969900D715E0 /* Character.swift */,
-				8657CFE52338047A00AFE1A2 /* CharacterHeader.swift */,
+				8657CFE3233801D500AFE1A2 /* People.swift */,
+				8657CFE52338047A00AFE1A2 /* Character.swift */,
+				86907264232F969900D715E0 /* CharacterDetail.swift */,
 				8640302F233060EE00EE6881 /* Craft.swift */,
 				86907266232F976200D715E0 /* Vehicle.swift */,
 				86907269232F982300D715E0 /* Starship.swift */,
 				8640302B2330609600EE6881 /* Planet.swift */,
 				8640302D233060CF00EE6881 /* CraftType.swift */,
-				8657CFE3233801D500AFE1A2 /* People.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,9 +210,9 @@
 				86907267232F976200D715E0 /* Vehicle.swift in Sources */,
 				8690726A232F982300D715E0 /* Starship.swift in Sources */,
 				86403030233060EE00EE6881 /* Craft.swift in Sources */,
-				8657CFE62338047A00AFE1A2 /* CharacterHeader.swift in Sources */,
+				8657CFE62338047A00AFE1A2 /* Character.swift in Sources */,
 				86DF3CFE233511ED00CE2A86 /* StarWarsAPIClient.swift in Sources */,
-				86907265232F969900D715E0 /* Character.swift in Sources */,
+				86907265232F969900D715E0 /* CharacterDetail.swift in Sources */,
 				8657CFE4233801D500AFE1A2 /* People.swift in Sources */,
 				86B609BA232F0B8000298EEA /* ViewController.swift in Sources */,
 				864030322330611F00EE6881 /* CraftViewModel.swift in Sources */,

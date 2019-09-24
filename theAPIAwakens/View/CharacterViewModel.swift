@@ -16,21 +16,26 @@ struct CharacterViewModel {
     let height: String
     let eyeColour: String
     let hairColour: String
-    let url: URL
     let vehiclesPiloted: [String]
-    //let starshipsPiloted: [String]
+    let starshipsPiloted: [String]
     
     init(from character: Character) {
         
         name = character.name
-        birthyear = character.birthYear
-        //birthPlace = character.homeWorld.name
-        birthPlace = character.homeworldURL
         if let height = character.height {
             self.height = String(height) + "m"  //Need Conversion here
         } else {
             self.height = "Unknown"
         }
+        
+        if let detail = character.detail {
+            self.birthyear = character.birthYear
+        }
+        
+        
+        //birthPlace = character.homeWorld.name
+        birthPlace = character.homeworldURL
+        
         
         eyeColour = character.eyeColour
         hairColour = character.hairColour

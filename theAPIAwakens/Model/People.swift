@@ -9,8 +9,8 @@
 import Foundation
 
 struct People: Codable {
-    let results: [CharacterHeader]
-    let next: String?
+    let results: [Character]
+    let next: URL?
     
     enum CodingKeys: String, CodingKey {
         case results
