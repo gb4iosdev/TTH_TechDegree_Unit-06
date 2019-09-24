@@ -12,14 +12,17 @@ struct CharacterViewModel {
     
     let name: String
     let birthyear: String
-    let birthPlace: URL
+    let home: String
     let height: String
     let eyeColour: String
     let hairColour: String
     let vehiclesPiloted: [String]
     let starshipsPiloted: [String]
+}
+
+extension CharacterViewModel {
     
-    init(from character: Character) {
+    init?(from character: Character) {
         
         name = character.name
         if let height = character.height {
@@ -29,19 +32,15 @@ struct CharacterViewModel {
         }
         
         if let detail = character.detail {
-            self.birthyear = character.birthYear
+            self.birthyear = detail.birthYear
+            self.eyeColour = detail.eyeColour
+            self.hairColour = detail.hairColour
+            self.home = detail.home ?? ""
+            self.vehiclesPiloted = detail.vehicleNames ?? []
+            self.starshipsPiloted = detail.starshipNames ?? []
+        } else {
+            return nil
         }
-        
-        
-        //birthPlace = character.homeWorld.name
-        birthPlace = character.homeworldURL
-        
-        
-        eyeColour = character.eyeColour
-        hairColour = character.hairColour
-        url = character.url
-        vehiclesPiloted = character.vehiclesPiloted.map { $0.absoluteString }
-        //starshipsPiloted = character.starshipsPiloted.map { $0.name }
     }
 }
 

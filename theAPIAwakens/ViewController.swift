@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     let client = StarWarsAPIClient()
-    var allCharacters: [CharacterHeader] = []
+    var allCharacters: [Character] = []
     
     
     override func viewDidLoad() {
@@ -29,11 +29,10 @@ class ViewController: UIViewController {
     func displayCharacter(using characterViewModel: CharacterViewModel) {
         print("\(characterViewModel.name)")
         print("\(characterViewModel.birthyear)")
-        print("\(characterViewModel.birthPlace)")
+        print("\(characterViewModel.home)")
         print("\(characterViewModel.height)")
         print("\(characterViewModel.eyeColour)")
         print("\(characterViewModel.hairColour)")
-        print("\(characterViewModel.url)")
         print("\(characterViewModel.vehiclesPiloted)")
         //print("\(characterViewModel.starshipsPiloted)")
     }
@@ -51,8 +50,9 @@ class ViewController: UIViewController {
     func getStarWarsData() {
         client.getStarWarsData(from: Endpoint.character.fullURL(), to: Character.self) { [unowned self] character, error in
             if let character = character {
-                let viewModel = CharacterViewModel(from: character)
-                self.displayCharacter(using: viewModel)
+                if let viewModel = CharacterViewModel(from: character) {
+                    self.displayCharacter(using: viewModel)
+                }
             } else {
                 print("didn't work:\(error)")
             }

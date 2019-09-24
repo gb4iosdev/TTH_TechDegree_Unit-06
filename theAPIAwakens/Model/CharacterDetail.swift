@@ -19,7 +19,7 @@ struct CharacterDetail: Codable {
     let vehiclesPiloted: [URL]
     let starshipsPiloted: [URL]
     
-    //Associated Variables requiring network calls
+    //Derived Data requiring network calls
     var home: String?
     var vehicleNames: [String]?
     var starshipNames: [String]?
