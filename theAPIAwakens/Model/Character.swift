@@ -17,6 +17,7 @@ struct Character: Codable {
     }
     
     var detail: CharacterDetail?
+    var viewModel: CharacterViewModel?
     
     enum CodingKeys: String, CodingKey {
         case name

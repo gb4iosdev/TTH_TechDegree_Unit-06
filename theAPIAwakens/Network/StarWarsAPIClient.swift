@@ -26,7 +26,7 @@ class StarWarsAPIClient {
         self.init(configuration: .default)
     }
     
-    func getStarWarsData<T: Codable>(from endpoint: URL?, to type: T.Type, completionHandler completion: @escaping (T?, Error?) -> Void) {
+    func getStarWarsData<T: Codable>(from endpoint: URL?, toType type: T.Type, completionHandler completion: @escaping (T?, Error?) -> Void) {
         
         guard let starWarsAPIURL = endpoint else {
             completion(nil, StarWarsAPIError.invalidURL)

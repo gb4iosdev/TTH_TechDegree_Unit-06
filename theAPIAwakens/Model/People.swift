@@ -12,6 +12,8 @@ struct People: Codable {
     let results: [Character]
     let next: URL?
     
+    static var allCharacters: [Character]? = []
+    
     enum CodingKeys: String, CodingKey {
         case results
         case next
