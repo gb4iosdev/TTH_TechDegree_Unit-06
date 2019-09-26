@@ -23,6 +23,9 @@ class ViewController: UIViewController {
         print("\n\n\n\n")
         retrieveStarWarsPages(using: Endpoint.people.fullURL())
         
+        let url1 = URL(string: "https://swapi.co/api/vehicles/4/")!
+        let url2 = URL(string: "https://swapi.co/api/vehicles/6/")!
+        fetchMultipleDiscreteURLS(using: [url1, url2])
         
     }
 
@@ -102,7 +105,29 @@ class ViewController: UIViewController {
     }
     
     //Write a function that takes an array of URL's and makes network calls to populate an array of results (names) and knows when it has finished.
-    func retrieveMultipleDiscreteURLS(using thisURL: [URL]) {
+    //Use this for the exceeds requirement - to populate the assocated vehicles and starships.
+    func fetchMultipleDiscreteURLS(using urls: [URL]) {
+        guard urls.count >= 1 else { return }
+        
+        //Don't forget to first check if the Vehicles header have already been downloaded - if this is the case use this local data instead of fetching.  Need to write a function that returns a vehicle and starship based on url.
+        
+        let requiredFetches = urls.count
+        var numberOfFetches = 0
+        var nameArray: [String] = []
+        
+        for url in urls {
+            client.getStarWarsData(from: url, toType: VehicleHeader.self) { [unowned self] vehicleHeader, error in
+                if let vehicleHeader = vehicleHeader {
+                    numberOfFetches += 1
+                    nameArray.append(vehicleHeader.name)
+                    if numberOfFetches == requiredFetches {
+                        print("Ready to return Array and populate Model: \(nameArray)")
+                    }
+                } else {
+                    print("didn't work:\(error)")
+                }
+            }
+        }
         
         
     }
