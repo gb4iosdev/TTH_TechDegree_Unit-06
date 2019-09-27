@@ -21,7 +21,16 @@ class ViewController: UIViewController {
         getStarWarsData()
         //retrieveStarWarsPeoplePage()
         print("\n\n\n\n")
-        retrieveStarWarsPages(using: Endpoint.people.fullURL())
+        if People.allEntities.count == 0 {
+            retrieveAllEntities(using: Endpoint.people.fullURL(), toType: People.self)
+        }
+        if Vehicles.allEntities.count == 0 {
+            retrieveAllEntities(using: Endpoint.vehicles.fullURL(), toType: Vehicles.self)
+        }
+        if Starships.allEntities.count == 0 {
+            retrieveAllEntities(using: Endpoint.starships.fullURL(), toType: Starships.self)
+        }
+        
         
         let url1 = URL(string: "https://swapi.co/api/vehicles/4/")!
         let url2 = URL(string: "https://swapi.co/api/vehicles/6/")!
@@ -79,23 +88,34 @@ class ViewController: UIViewController {
         }
     }
     
-    func retrieveStarWarsPages(using thisURL: URL?) {
+    func retrieveAllEntities<T: Codable>(using thisURL: URL?, toType type: T.Type) {
+        
+        var nextURL: URL?
         
         if thisURL == nil {
             return
         } else {    //Make network call using API client with the URL
-            client.getStarWarsData(from: thisURL, toType: People.self) { [unowned self] people, error in
-                if let people = people {
-                    //Append people's characters to the allCharacters array
-                    self.allCharacters.append(contentsOf: people.results)
+            client.getStarWarsData(from: thisURL, toType: T.self) { entities, error in
+                if let entities = entities {
+                    //Append entity to the type’s static data source variable
+                    if let allEntities = entities as? People {
+                        People.allEntities.append(contentsOf: allEntities.results)
+                        nextURL = allEntities.next
+                    } else if let allEntities = entities as? Vehicles {
+                        Vehicles.allEntities.append(contentsOf: allEntities.results)
+                        nextURL = allEntities.next
+                    } else if let allEntities = entities as? Starships {
+                        Starships.allEntities.append(contentsOf: allEntities.results)
+                        nextURL = allEntities.next
+                    }
                    
                     //Check if there is a next page, and that it can be created into an URL.  If so, call this method again.
-                    if let nextURL = people.next {
-                        self.retrieveStarWarsPages(using: nextURL)
-                    } else {
-                        print("AllCharacters count is: \(self.allCharacters.count)")
-                        People.allCharacters = self.allCharacters
-                        print(People.allCharacters)
+                    if let nextURL = nextURL {
+                        self.retrieveAllEntities(using: nextURL, toType: type)
+                    } else {        //Can remove this else clause
+                        print("People Entities final count is: \(People.allEntities.count)")
+                        print("Vehicles Entities final count is: \(Vehicles.allEntities.count)")
+                        print("Starships Entities final count is: \(Starships.allEntities.count)")
                     }
                 } else {
                     print("Error in retrieveStarWarsPage is: \(error)")     ///Create an alert here??
@@ -133,7 +153,7 @@ class ViewController: UIViewController {
     }
     
     //This updates the detail on a single entity & then the viewModel and would go on the 2nd VC:
-    @IBAction func pickedCharacter(_ sender: UIButton) {
+    /*@IBAction func pickedCharacter(_ sender: UIButton) {
         
         guard let chars = People.allCharacters else { return }
         
@@ -161,7 +181,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-    }
+    }*/
     
     
 }

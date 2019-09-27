@@ -8,11 +8,12 @@
 
 import Foundation
 
+//Structure to capture all Characters from API
 struct People: Codable {
     let results: [Character]
     let next: URL?
     
-    static var allCharacters: [Character]? = []
+    static var allEntities: [Character] = []
     
     enum CodingKeys: String, CodingKey {
         case results

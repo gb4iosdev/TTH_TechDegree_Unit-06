@@ -12,16 +12,15 @@ import Foundation
 enum Endpoint: String {
     case character = "people/1/"
     case vehicle = "vehicles/14/"
-    case people = "people/"
     case peopleLastPage = "people/?page=9"
+    
+    //for all entity retrievals:
+    case people = "people/"
+    case vehicles = "vehicles/"
+    case starships = "starships/"
     
     func fullURL() -> URL? {
         let base = "https://swapi.co/api/"
-        switch self {
-        case .character: return URL(string: base + self.rawValue)
-        case .vehicle: return URL(string: base + self.rawValue)
-        case .people: return URL(string: base + self.rawValue)
-        case .peopleLastPage: return URL(string: base + self.rawValue)
-        }
+        return URL(string: base + self.rawValue)
     }
 }

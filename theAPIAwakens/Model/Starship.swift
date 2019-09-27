@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Starship: Craft {
+struct Starship: Codable {
     
     let name: String
     let make: String
@@ -18,6 +18,16 @@ struct Starship: Craft {
     let crewCapacity: String
     let craftType: CraftType = .starship
     var url: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case make = "model"
+        case cost = "cost_in_credits"
+        case length
+        case craftClass = "starship_class"
+        case crewCapacity = "crew"
+        case url
+    }
     
     func fetchDetail() {
         

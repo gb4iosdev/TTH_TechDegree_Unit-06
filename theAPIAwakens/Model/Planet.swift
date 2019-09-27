@@ -8,6 +8,12 @@
 
 import Foundation
 
-struct Planet {
+//Structure to capture the character’s homeworld's name.
+struct Planet: Codable {
+    
     let name: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+    }
 }
